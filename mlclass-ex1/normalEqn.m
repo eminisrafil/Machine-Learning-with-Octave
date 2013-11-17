@@ -14,7 +14,7 @@ theta = zeros(size(X, 2), 1);
 
 %X
 
-theta = ((transpose(X)*X)^.1) *transpose(X)*y
+theta = pinv(transpose(X)*X) *transpose(X)*y
 
 % -------------------------------------------------------------
 
