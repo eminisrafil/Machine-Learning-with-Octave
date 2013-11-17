@@ -27,11 +27,25 @@ sigma = zeros(1, size(X, 2));
 %       
 
 
+squareFootMean = mean(X(:,1));
+bedRoomMean = mean(X(:,2));
 
+mu(1,1) = squareFootMean;
+mu(1,2) = bedRoomMean;
 
+squareFootSTD = std(X(:,1));
+bedRoomSTD = std(X(:,2));
 
+sigma(1,1) = squareFootSTD;
+sigma(1,2) = bedRoomSTD;
 
+X_norm_squareFoot = X_norm(:,1) - mu(1,1);
+X_norm_bedRoom = X_norm(:,2) - mu(1,2);
 
+X_norm(:,1) = X_norm_squareFoot/sigma(1,1);
+X_norm(:,2) = X_norm_bedRoom/sigma(1,2);
+
+X_norm
 
 
 % ============================================================
