@@ -26,26 +26,35 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+mu = mean(X);
+sigma = std(X);
+oneCol = ones(length(X), 1);
 
-squareFootMean = mean(X(:,1));
-bedRoomMean = mean(X(:,2));
+X_norm = (X_norm .- (oneCol * mu)) ./ (oneCol * sigma);
 
-mu(1,1) = squareFootMean;
-mu(1,2) = bedRoomMean;
+%X_norm = [(X(:,1)-mu(1,1))./sigma(1,1), (X(:,2)-mu(1,2))./sigma(1,2)]
 
-squareFootSTD = std(X(:,1));
-bedRoomSTD = std(X(:,2));
 
-sigma(1,1) = squareFootSTD;
-sigma(1,2) = bedRoomSTD;
+%DERP - Still getting use to octave syntax
+% squareFootMean = mean(X(:,1));
+% bedRoomMean = mean(X(:,2));
 
-X_norm_squareFoot = X_norm(:,1) - mu(1,1);
-X_norm_bedRoom = X_norm(:,2) - mu(1,2);
+% mu(1,1) = squareFootMean;
+% mu(1,2) = bedRoomMean;
 
-X_norm(:,1) = X_norm_squareFoot/sigma(1,1);
-X_norm(:,2) = X_norm_bedRoom/sigma(1,2);
+% squareFootSTD = std(X(:,1));
+% bedRoomSTD = std(X(:,2));
 
-X_norm
+% sigma(1,1) = squareFootSTD;
+% sigma(1,2) = bedRoomSTD;
+
+% X_norm_squareFoot = X_norm(:,1) - mu(1,1);
+% X_norm_bedRoom = X_norm(:,2) - mu(1,2);
+
+% X_norm(:,1) = X_norm_squareFoot/sigma(1,1);
+% X_norm(:,2) = X_norm_bedRoom/sigma(1,2);
+
+% X_norm
 
 
 % ============================================================
