@@ -19,19 +19,21 @@ grad = zeros(size(theta));
 
 h = sigmoid(X * theta);
 
-J = (1/m)  * sum((-y.*log(h)) - (1 - y).*log(1-h)) + ((lambda/(2 *m)) * sum(realpow(theta,2))); 
+J = (1/m)  * sum((-y.*log(h)) - (1 - y).*log(1-h)) + ((lambda/(2 *m)) * sum(realpow(theta(2:end),2))); 
 
-J
+% theta_reg = theta;
 
-theta_reg = theta;
-
-for i = 2:size(theta_reg)
-	theta_reg(i) = ((lambda/(2 *m)) * sum(realpow(theta_red(i),2))
-end
+% for i = 2 : size(theta_reg)
+% 	theta_reg(i) = ((lambda/(2 *m)) * sum(realpow(theta_reg(i:),2)));
+% end
 
 
+%repeating myself
+grad_unregularized_thetas = (1/m) * X' * (h -y);
+grad = grad_unregularized_thetas;
+grad_unregularized_thetas(1) = 0;
 
-%grad = (1/m) * X' * (h -y) ((lambda/(2 *m)) * sum(realpow(theta_reg,2)));
+grad = grad + ((lambda/m) *grad_unregularized_thetas(1:end));
 
 
 % =============================================================
